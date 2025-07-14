@@ -1,21 +1,22 @@
-<?php  
-include "connectio.php";
+<?php 
+
+    include "connection.php";
+
+       $name = $_POST['name'];
+       $age = $_POST['age'];
+       $email = $_POST['email'];
+       $gender = $_POST['gender'];
+
+
+       $sql ="INSERT INTO students(name,age,email,gender) VALUES('$name','$age','$email','$gender')";
+
+       $result = $conn->query(($sql));
+       if($result ){ 
+        header("location:read.php");
+       }
 
 
 
-try{
 
 
-$sql = "INSERT INTO emp(name,age,email,phone,password,re_password) VALUES('muskan',25,'muskn@gmail.com',9847364783,1234,1234)";
-$conn->exec($sql);
-
-echo "inserted data successfully";
-  $last_id = $conn->lastInsertId();
-  echo "New record created successfully. Last inserted ID is: " . $last_id;
-
-}catch(PDOException $e){
-    echo "failed..".$e->getMessage();
-}
-
-$conn =null;
 ?>

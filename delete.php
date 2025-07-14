@@ -1,22 +1,15 @@
 <?php 
-include "connectio.php";
 
+include "connection.php";
 
-try{
-$sql = "DELETE FROM emp WHERE id=3";
+$id = $_GET['id'];
 
-// $stmt = $conn->prepare($sql);
-// $stmt->bindParam(":id",$id);
-// $id = 2;
-// $stmt->execute();
-
-$conn->exec($sql);
-
-echo "Delete data successfully";
-
-
-}catch(PDOException $e){
-    echo "failed..".$e->getMessage();
+$sql = "DELETE FROM students where id = '$id'";
+$result = $conn->query($sql);
+if($result){
+    header("location:read.php");
 }
+
+
 
 ?>
